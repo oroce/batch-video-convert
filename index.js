@@ -78,7 +78,7 @@ async.forEachSeries( tasks, function( task, cb ){
 				"value": '"' + task.sourceFile + '"'
 			}, {
 				"name":  "-vf",
-				"value": "[in] hflip [hflip]; [hflip] fade=in:0:60 [out]"
+				"value": '"[in] hflip [hflip]; [hflip] fade=in:0:60 [out]"'
 			}, {
 				"name":  "-strict",
 				"value": "-2"

@@ -8,6 +8,7 @@ var tasks = require( taskFileName );
 
 var async = require( "async" );
 
+var ffmpegPath = process.env.FFMPEG_PATH||"/usr/bin";
 function status(){
 	var todoTasks = tasks.filter(function( task ){
 		return task.done === false;
@@ -23,8 +24,10 @@ async.forEachSeries( tasks, function( task, cb ){
 	if( task.done === true ){
 		return cb();
 	}
-
+	task.cmd = ffmpegPath + task.cmd;
+	console.log( "running command: %s", task.cmd );
 	var child = spawn( task.cmd );
+	console.log( "cmd", task.cmd );
 	child
 		.on( "error", console.error.bind( console ) )
 		.on( "error", function( err ){
