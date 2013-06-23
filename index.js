@@ -41,7 +41,7 @@ var tasks = fs.readdirSync( sourceDir )
 		};
 	})
 	.map(function( file ){
-		mkdirp.sync( path.dirname( file ) );
+		mkdirp.sync( path.dirname( file.targetFile ) );
 		return file;
 	});
 
