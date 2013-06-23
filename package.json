@@ -1,0 +1,17 @@
+{
+  "name": "batch-convert",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "oroce <robert@oroszi.net>",
+  "license": "BSD",
+  "dependencies": {
+    "fluent-ffmpeg": "~1.4.0",
+    "mkdirp": "~0.3.5",
+    "async": "~0.2.9"
+  }
+}
