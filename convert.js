@@ -23,11 +23,24 @@ async.forEachSeries( tasks, function( task, cb ){
 	if( task.done === true ){
 		return cb();
 	}
-	process.nextTick(function(){
-		task.done = true;
-		writeTasksStatus();
-		status();
-		cb();
+
+	var child = spawn( task.cmd );
+	child
+		.on( "error", console.error.bind( console ) )
+		.on( "error", function( err ){
+			cb( err );
+		})
+		.on( "exit", function(){
+			task.done = true;
+			writeTasksStatus();
+			status();
+			cb();
+		});
+	child.stderr.pipe( process.stderr, {
+		end: false
+	});
+	child.stdout.pipe( process.stdout, {
+		end: false
 	});
 
 }, function( err ){
